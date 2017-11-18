@@ -1,11 +1,11 @@
 
-[![N|Solid](https://www.followmebiketour.com/wp-content/uploads/2016/12/Follow-Me-Bangkok-bicycle-tours-logo-1.png)](https://www.followmebiketour.com/wp-content/uploads/2016/12/Follow-Me-Bangkok-bicycle-tours-logo-1.png)
+![N|Solid](https://github.com/KarimZghali/uploadit/blob/master/resources/logo.jpg?raw=true)
 
 
 
 Upload'it is a download interface for visual advertising
 
-[![N|Solid](https://github.com/KarimZghali/follow-me/blob/master/resources/capt.jpg?raw=true)
+![N|Solid](https://github.com/KarimZghali/uploadit/blob/master/resources/capt.jpg?raw=true)
 
 # Installation
 
