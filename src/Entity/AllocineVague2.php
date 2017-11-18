@@ -1,0 +1,255 @@
+<?php
+
+namespace UPLOADIT\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AllocineVague2
+ *
+ * @ORM\Table(name="allocine_vague2", indexes={@ORM\Index(name="id_campagne", columns={"id_campagne"})})
+ * @ORM\Entity
+ */
+class AllocineVague2
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_allocine_vague2", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAllocineVague2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="start_date_allocine_vague2", type="string", length=20, nullable=true)
+     */
+    private $startDateAllocineVague2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="start_end_allocine_vague2", type="string", length=20, nullable=true)
+     */
+    private $startEndAllocineVague2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="habillage_pc_allocine_vague2", type="string", length=50, nullable=true)
+     */
+    private $habillagePcAllocineVague2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="habillage_mobile_allocine_vague2", type="string", length=50, nullable=true)
+     */
+    private $habillageMobileAllocineVague2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="habillage_tablette_allocine_vague2", type="string", length=50, nullable=true)
+     */
+    private $habillageTabletteAllocineVague2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="demipage_allocine_vague2", type="string", length=50, nullable=true)
+     */
+    private $demipageAllocineVague2;
+
+    /**
+     * @var \Campagne
+     *
+     * @ORM\ManyToOne(targetEntity="Campagne")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_campagne", referencedColumnName="id_campagne")
+     * })
+     */
+    private $idCampagne;
+
+
+
+    /**
+     * Set startDateAllocineVague2
+     *
+     * @param string $startDateAllocineVague2
+     *
+     * @return AllocineVague2
+     */
+    public function setStartDateAllocineVague2($startDateAllocineVague2)
+    {
+        $this->startDateAllocineVague2 = $startDateAllocineVague2;
+
+        return $this;
+    }
+
+    /**
+     * Get startDateAllocineVague2
+     *
+     * @return string
+     */
+    public function getStartDateAllocineVague2()
+    {
+        return $this->startDateAllocineVague2;
+    }
+
+    /**
+     * Set startEndAllocineVague2
+     *
+     * @param string $startEndAllocineVague2
+     *
+     * @return AllocineVague2
+     */
+    public function setStartEndAllocineVague2($startEndAllocineVague2)
+    {
+        $this->startEndAllocineVague2 = $startEndAllocineVague2;
+
+        return $this;
+    }
+
+    /**
+     * Get startEndAllocineVague2
+     *
+     * @return string
+     */
+    public function getStartEndAllocineVague2()
+    {
+        return $this->startEndAllocineVague2;
+    }
+
+    /**
+     * Set habillagePcAllocineVague2
+     *
+     * @param string $habillagePcAllocineVague2
+     *
+     * @return AllocineVague2
+     */
+    public function setHabillagePcAllocineVague2($habillagePcAllocineVague2)
+    {
+        $this->habillagePcAllocineVague2 = $habillagePcAllocineVague2;
+
+        return $this;
+    }
+
+    /**
+     * Get habillagePcAllocineVague2
+     *
+     * @return string
+     */
+    public function getHabillagePcAllocineVague2()
+    {
+        return $this->habillagePcAllocineVague2;
+    }
+
+    /**
+     * Set habillageMobileAllocineVague2
+     *
+     * @param string $habillageMobileAllocineVague2
+     *
+     * @return AllocineVague2
+     */
+    public function setHabillageMobileAllocineVague2($habillageMobileAllocineVague2)
+    {
+        $this->habillageMobileAllocineVague2 = $habillageMobileAllocineVague2;
+
+        return $this;
+    }
+
+    /**
+     * Get habillageMobileAllocineVague2
+     *
+     * @return string
+     */
+    public function getHabillageMobileAllocineVague2()
+    {
+        return $this->habillageMobileAllocineVague2;
+    }
+
+    /**
+     * Set habillageTabletteAllocineVague2
+     *
+     * @param string $habillageTabletteAllocineVague2
+     *
+     * @return AllocineVague2
+     */
+    public function setHabillageTabletteAllocineVague2($habillageTabletteAllocineVague2)
+    {
+        $this->habillageTabletteAllocineVague2 = $habillageTabletteAllocineVague2;
+
+        return $this;
+    }
+
+    /**
+     * Get habillageTabletteAllocineVague2
+     *
+     * @return string
+     */
+    public function getHabillageTabletteAllocineVague2()
+    {
+        return $this->habillageTabletteAllocineVague2;
+    }
+
+    /**
+     * Set demipageAllocineVague2
+     *
+     * @param string $demipageAllocineVague2
+     *
+     * @return AllocineVague2
+     */
+    public function setDemipageAllocineVague2($demipageAllocineVague2)
+    {
+        $this->demipageAllocineVague2 = $demipageAllocineVague2;
+
+        return $this;
+    }
+
+    /**
+     * Get demipageAllocineVague2
+     *
+     * @return string
+     */
+    public function getDemipageAllocineVague2()
+    {
+        return $this->demipageAllocineVague2;
+    }
+
+    /**
+     * Get idAllocineVague2
+     *
+     * @return integer
+     */
+    public function getIdAllocineVague2()
+    {
+        return $this->idAllocineVague2;
+    }
+
+    /**
+     * Set idCampagne
+     *
+     * @param \Campagne $idCampagne
+     *
+     * @return AllocineVague2
+     */
+    public function setIdCampagne(\Campagne $idCampagne = null)
+    {
+        $this->idCampagne = $idCampagne;
+
+        return $this;
+    }
+
+    /**
+     * Get idCampagne
+     *
+     * @return \Campagne
+     */
+    public function getIdCampagne()
+    {
+        return $this->idCampagne;
+    }
+}
