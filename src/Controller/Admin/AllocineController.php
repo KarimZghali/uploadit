@@ -14,15 +14,13 @@ class AllocineController
 {
 
     public function manage($bdc) {
-
-
-
+        $entityManager = require_once join(DIRECTORY_SEPARATOR, [__DIR__, '/../../../bootstrap.php']);
 
         $model = new AllocineModel();
 
-        $campagne = $model->check($bdc);
+        $model->check($bdc, $entityManager);
 
-        $model->read($bdc, $campagne);
+        $model->read($bdc, $entityManager);
 
     }
 
