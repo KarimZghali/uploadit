@@ -6,7 +6,7 @@
  * Time: 12:13
  */
 
-namespace UPLOADIT\Controller\Admin;
+namespace UPLOADIT\Controller\Media;
 
 
 class NrjController

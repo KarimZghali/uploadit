@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <?php
 
-use UPLOADIT\Controller\Admin\AllocineController;
-use UPLOADIT\Controller\Admin\AdmooveController;
-use UPLOADIT\Controller\Admin\NrjController;
-use UPLOADIT\Controller\Admin\AuthBdcController;
+use UPLOADIT\Controller\Media\AllocineController;
+use UPLOADIT\Controller\Media\AdmooveController;
+use UPLOADIT\Controller\Media\NrjController;
+use UPLOADIT\Controller\Media\AuthBdcController;
 
 require "./../vendor/autoload.php";
 

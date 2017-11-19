@@ -1,6 +1,6 @@
 <?php
 
-namespace UPLOADIT\Controller\Admin;
+namespace UPLOADIT\Controller\Media;
 use UPLOADIT\Model\FormBdcModel;
 
 class AuthBdcController {
