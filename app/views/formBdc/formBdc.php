@@ -10,7 +10,7 @@
     <label for="bdc">Bon de commande</label>
     <input type="text" name="bdc" placeholder="Entrez ici votre numéro de bon de commande">
     <br>
-Quelle offre avez-vous souscite ?
+A quelle offre avez-vous souscrite ?
     <input type="radio" id="allocine" name="media" value="allocine">
     <label for="allocine">Allociné</label>
 

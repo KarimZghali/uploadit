@@ -7,7 +7,23 @@ class AllocineModel
 {
 
 
-    public function check($bdc, $entityManager)
+    public function checkBdcPattern($bdc)
+    {
+
+        $pattern = '/^[wW][1-9][0-9]{4}$/';
+
+        if (preg_match($pattern,$bdc)) {
+//            var_dump('BDC OK !');
+
+        } else {
+
+//            var_dump('BAD bdc!');
+            header('location: ./?failAuth=true');
+        }
+
+    }
+
+    public function checkBdcData($bdc, $entityManager)
     {
 
        // $entityManager = require_once join(DIRECTORY_SEPARATOR, [__DIR__, '/../../bootstrap.php']);
@@ -23,6 +39,8 @@ class AllocineModel
             $setCampagne->setNumberBdcCampagne($bdc);
             $entityManager->persist($setCampagne);
             $entityManager->flush();
+        } else {
+            var_dump('BDC Déjà existant');
         }
 
     }

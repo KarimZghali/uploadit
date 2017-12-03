@@ -13,12 +13,17 @@ use UPLOADIT\Model\AllocineModel;
 class AllocineController
 {
 
-    public function manage($bdc) {
+    public function manage($bdc, $media) {
+
+        var_dump($media);
+
         $entityManager = require_once join(DIRECTORY_SEPARATOR, [__DIR__, '/../../../bootstrap.php']);
 
         $model = new AllocineModel();
 
-        $model->check($bdc, $entityManager);
+        $model->checkBdcPattern($bdc);
+
+        $model->checkBdcData($bdc, $entityManager);
 
         $model->read($bdc, $entityManager);
 

@@ -10,21 +10,22 @@ require "./../vendor/autoload.php";
 
 try {
 
-//    if (filter_input(INPUT_POST, "bdc") && (filter_input(INPUT_POST, "media")))
 
     $bdc = (string) filter_input(INPUT_GET, "bdc");
     $media = (string) filter_input(INPUT_GET, "media");
+    $failAuth = (boolean) filter_input(INPUT_GET, "failAuth");
 
 
-//    $formBdc = (string) filter_input(INPUT_POST, "formBdc");
-//    $formMedia = (string) filter_input(INPUT_POST, "formMedia");
+    if (($bdc) && !($media)) {
+        $failAuth = true;
+    }
 
 
         $route = [
             "allocine" => AllocineController::class,
             "admoove"  => AdmooveController::class,
             "nrj"      => NrjController::class,
-            "authBdc" => AuthBdcController::class,
+           // "authBdc"  => AuthBdcController::class,
         ];
 
 
@@ -32,21 +33,16 @@ try {
 
             if ($media == $routeValue) {
                 $controller = new $className;
-                $response = $controller->{'manage'}($bdc);
+                $response = $controller->{'manage'}($bdc, $media);
                 break;
             }
 
         }
 
         if (!isset($controller)) {
-//            $controller = new AuthBdcController;
-//            $response = $controller->manage($formBdc);
-            var_dump('error');
+            $controller = new AuthBdcController;
+            $response = $controller->manage($failAuth);
         }
-
-
-
-
 
 } catch(throwable $e) {
     echo '<h1>ERROR : </h1>'.(string) $e;
