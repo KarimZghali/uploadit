@@ -1,0 +1,198 @@
+#container {
+    font-family: Asenine;
+}
+
+#info-area {
+    background-color: #F5F5F5;
+    border-radius: 20px;
+
+    -webkit-box-shadow: -7px 6px 58px -15px rgba(0,0,0,0.63);
+    -moz-box-shadow: -7px 6px 58px -15px rgba(0,0,0,0.63);
+    box-shadow: -7px 6px 58px -15px rgba(0,0,0,0.63);
+}
+
+#img-logo {
+
+}
+
+#management-area {
+
+}
+
+.row {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+#logo {
+text-align: center;
+   padding: 20px;
+}
+
+#bdc {
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 30px;
+}
+
+.shadow {
+    background-color: #03A9F4;
+    color: white;
+
+
+}
+
+#change-bdc {
+    margin-top: 20px;
+    text-align: center;
+    border: 3px solid white;
+    border-radius: 20px;
+    width: 250px;
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 4px;
+    text-decoration: none;
+    background-color: #DDDDDD;
+}
+
+#mini {
+    font-size: 12px;
+    margin-top: -10px;
+}
+
+#select-commercial {
+
+}
+
+#form {
+    margin-top: 20px;
+    font-size: 18px;
+    letter-spacing: 3px;
+}
+
+.btn2 {
+
+    border: 3px solid white;
+    border-radius: 20px;
+    width: 250px;
+    font-size: 20px;
+    width:100%;
+    letter-spacing: 4px;
+    text-decoration: none;
+}
+
+#title {
+    letter-spacing: 5px;
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+#technical-specifications {
+
+    font-size: 20px;
+    text-align: center;
+}
+
+.txt-tech-spec {
+    background-color: #29B6F6;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+
+#customer-reminder {
+    margin-top: 10px;
+}
+
+.img {
+    width: 100%;
+}
+
+.btn-media {
+    border-radius: 30px;
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+#btn-allocine {
+    background-color:#EEBE02 ;
+}
+
+#btn-admoove {
+    background-color:#03A9F4 ;
+}
+
+#btn-nrj {
+    background-color: #F44336;
+}
+
+span {
+    font-size: 12px;
+}
+
+#date-select {
+    margin-top: 40px;
+}
+.btn-date {
+    border-radius: 30px;
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 5px;
+    background-color:#DDDDDD ;
+
+    margin-left: 10px;
+}
+
+.txt-date {
+    font-size: 20px;
+}
+
+.align {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    letter-spacing: 3px;
+
+}
+.btn-valid-date {
+
+    border-radius: 30px;
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 5px;
+    background-color:white ;
+    border: 2px solid #03A9F4;
+    margin-left: 10px;
+}
+
+#date-edit {
+    text-align: center;
+}
+
+#pictures-manage {
+
+}
+
+.box {
+    width:300px;
+    height: 50px;
+    background-color: #F5F5F5;
+
+    -webkit-box-shadow: -7px 6px 58px -15px rgba(0,0,0,0.63);
+    -moz-box-shadow: -7px 6px 58px -15px rgba(0,0,0,0.63);
+    box-shadow: -7px 6px 58px -15px rgba(0,0,0,0.63);
+
+}
+
+
+
+
+
+
+
+

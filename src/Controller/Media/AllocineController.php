@@ -8,14 +8,13 @@
 
 namespace UPLOADIT\Controller\Media;
 use UPLOADIT\Model\AllocineModel;
+;use UPLOADIT\Controller\Controller;
 
 
-class AllocineController
+class AllocineController extends Controller
 {
 
     public function manage($bdc, $media) {
-
-        var_dump($media);
 
         $entityManager = require_once join(DIRECTORY_SEPARATOR, [__DIR__, '/../../../bootstrap.php']);
 
@@ -27,6 +26,9 @@ class AllocineController
 
         $model->read($bdc, $entityManager);
 
+        include(__DIR__."/../../../app/views/allocine/manage.php");
+
     }
+
 
 }
