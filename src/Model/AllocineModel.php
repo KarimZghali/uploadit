@@ -334,23 +334,36 @@ class AllocineModel
                     ->getRepository(FormatAllocineHabillageMobile::class)
                     ->findOneBy(["idFormatAllocineHabillageMobile" => 1 ]);
 
-                $this->setPictureExample($_GET["format"]);
+                try {
+                    $this->setPictureExample($_GET["format"]);
+                } catch (\Throwable $e) {
 
+                    $this->error =$e->getMessage();
+                }
             } else if ($format === "Habillage-tablette") {
 
                 $format = $entityManager
                     ->getRepository(FormatAllocineHabillageTablette::class)
                     ->findOneBy(["idFormatAllocineHabillageTablette" => 1 ]);
 
+               try {
                 $this->setPictureExample($_GET["format"]);
+               } catch (\Exception $e) {
+
+               }
+
 
             } else if ($format === "Demi-page") {
 
                 $format = $entityManager
                     ->getRepository(FormatAllocineDemipage::class)
                     ->findOneBy(["idFormatAllocineDemipage" => 1 ]);
-
+               try {
                 $this->setPictureExample($_GET["format"]);
+               } catch (\Exception $e) {
+
+            }
+
 
             } else {
 
@@ -423,10 +436,11 @@ class AllocineModel
 
     }
 
-    public function box($formatBox, $picture) {
+    public function box($formatBox, $picture, $uploadError, $formatError) {
 
-
-        if ($picture == null) {
+        if ($picture == null && $uploadError == true && $formatError === $formatBox) {
+            return include(__DIR__ . "/../../app/views/ui/boxErrorUpload.php");
+        } else if ($picture == null) {
             return include(__DIR__ . "/../../app/views/ui/boxUpload.php");
         } else {
             return include(__DIR__ . "/../../app/views/ui/boxManage.php");
