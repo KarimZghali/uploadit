@@ -10,7 +10,8 @@ use UPLOADIT\Check\CheckPictures;
 class AllocineController extends Controller
 {
 
-
+    private $uploadError = '';
+    private $formatError = '';
 
     public function manage($bdc, $media, $emailCustomer) {
 
@@ -22,6 +23,7 @@ class AllocineController extends Controller
 
         $model->checkBdcData($bdc, $entityManager);
 
+
         // Si l'utilisateur renseigne une adresse mail:
         if ($emailCustomer) {
             $model-> addCustomer($bdc, $emailCustomer, $entityManager);
@@ -31,9 +33,11 @@ class AllocineController extends Controller
         // et upload si tout est ok
         if (isset($_POST["upload"])) {
 
+            $this->formatError = $_POST["format"];
             $allocineCheckPictures = new AllocineModel();
             $allocineCheckPictures->read($bdc, $entityManager, $_POST["format"] );
-            CheckPictures::check($bdc, $_POST["format"], $allocineCheckPictures);
+            $this->uploadError = CheckPictures::check($bdc, $_POST["format"], $allocineCheckPictures);
+
         }
 
         if (isset($_GET["format"])) {
@@ -58,7 +62,7 @@ class AllocineController extends Controller
 
     public function boxView($formatBox, $model, $picture) {
 
-        return $model->box($formatBox, $picture);
+        return $model->box($formatBox, $picture, $this->uploadError, $this->formatError);
 
     }
 
