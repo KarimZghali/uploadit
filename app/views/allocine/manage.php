@@ -4,8 +4,6 @@ include(__DIR__."/../header.php");
 
 ?>
 
-
-
 <body>
 
     <div id="container" class="">
@@ -16,13 +14,13 @@ include(__DIR__."/../header.php");
                 <img src="./../resources/new-logo.png" alt="logo Upload'it" id="img-logo">
             </div>
 
-            <div id="bdc" class="shadow">
+            <a href="/uploadit/web/"><div id="bdc" class="shadow">
                 <div><?php echo $model->getBdc() ?></div>
-                <div id="mini">(cliquer pour changer de campagne)</div>
+                <div id="mini">(cliquer pour changer de campagne)</div></a>
             </div>
 
             <div id="form-info">
-                <form class="">
+                <form method="post" action="/uploadit/web/?bdc=W11911&media=allocine" class="">
                         <div class="flex">
                             <label class="" for="selectbasic">Commercial</label>
                             <div class="">
@@ -37,7 +35,7 @@ include(__DIR__."/../header.php");
                         <div class="flex form-info">
                             <label class="" for="textinput">Email client</label>
                             <div class="">
-                                <input id="textinput" name="textinput" type="text" placeholder="" class="" required="">
+                                <input id="email-customer" name="email-customer" type="email" placeholder="" class="" required="">
 
                             </div>
                         </div>
@@ -50,11 +48,11 @@ include(__DIR__."/../header.php");
             </div>
             <div id="technical-specifications" class="shadow">
                 <div id="title">Specifications Techniques</div>
-                <div class="txt-tech-spec">Nom du format : Habillage PC</div>
+                <div class="txt-tech-spec">Nom du format : <?php echo $format; ?></div>
                 <div class="txt-tech-spec">
                     <div>Exemple :</div>
-                    <div><img  src="./../resources/habillage-PC.jpg" class="img"></div>
-                    <div>Télécharger template</div>
+                    <div><img  src="./../resources/<?php echo $model->getPictureExample(); ?>.jpg" class="img"></div>
+                    <a href="./../resources/templates/<?php echo $model->getPictureExample(); ?>.zip"><div class="template">Télécharger template</div></a>
                 </div>
                 <div class="txt-tech-spec">Zone de texte à respecter : <?php echo $model->getTxtZone(); ?> </div>
                 <div class="txt-tech-spec">Format : <?php echo $model->getGif();  ?>  </div>
@@ -105,7 +103,6 @@ include(__DIR__."/../header.php");
 
                 <form method="get" action="" class=''>
 
-
                     <label class="align test" for="textinput">Periode 1 du</label>
                     <input id="textinput" name="textinput" type="date" placeholder="" class="align" required="">
                     <label class="align" for="textinput">au</label>
@@ -128,18 +125,15 @@ include(__DIR__."/../header.php");
 
                     <div id="habillage-pc" class='box shadow-box'>
 
-                        <div class="tilte-box">Habillage PC</div>
-                        <div class ="no-pictres">Aucun habillage PC uploadé pour le moment</div>
-                        <div class="btn-ts">Voir les spécifications techniques</div>
-                        <form method="get" action="" class=" form-file flex">
+                           <?php echo $this->boxView("Habillage-Pc", $model, $model->getHabillagePcVague1()); ?>
 
-                            <input type="file" name="file">
-                            <button type="submit" value="">Envoyer</button>
-
-                        </form>
                     </div>
 
-                    <div id="habillage-mobile"class='box shadow-box'></div>
+                    <div id="habillage-mobile"class='box shadow-box'>
+
+                        <?php $this->boxView("Habillage-smartphone", $model, $model->getHabillageMobileVague1()); ?>
+
+                    </div>
 
                 </div>
 
@@ -147,18 +141,15 @@ include(__DIR__."/../header.php");
 
                     <div id="habillage-tablette"class='box shadow-box'>
 
-                        <div class="tilte-box">Habillage tablette</div>
-                        <div class ="img-box"><img src="./../resources/<?php echo $model->getHabillageTabletteVague1();?>" class="pictures"></div>
-                        <div class="btn-manage">
-                            <div class="btn-mn glyphicon glyphicon-download"></div>
-                            <div class="btn-mn glyphicon glyphicon-zoom-in"></div>
-                            <div class="btn-mn glyphicon glyphicon-trash"></div>
-
-                        </div>
+                        <?php $this->boxView("Habillage-tablette", $model, $model->getHabillageTabletteVague1()); ?>
 
                     </div>
 
-                    <div id="habillage-dp"class='box shadow-box'></div>
+                    <div id="habillage-dp"class='box shadow-box'>
+
+                        <?php $this->boxView("Demi-page", $model, $model->getDemiPageVague1()); ?>
+
+                    </div>
 
                     </div>
 
