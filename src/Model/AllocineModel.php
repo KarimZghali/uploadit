@@ -307,7 +307,7 @@ class AllocineModel
 
     }
 
-    public function read($bdc, $entityManager, $format)
+    public function read($bdc, $entityManager)
     {
         $campagne = $entityManager
             ->getRepository(Campagne::class)
@@ -328,42 +328,29 @@ class AllocineModel
 
 //        if ( isset($_GET["format"]) ) {
 
-           if ( $format === "Habillage-smartphone") {
+           if ( isset($_GET["format"]) && $_GET["format"] === "Habillage-smartphone") {
 
                 $format = $entityManager
                     ->getRepository(FormatAllocineHabillageMobile::class)
                     ->findOneBy(["idFormatAllocineHabillageMobile" => 1 ]);
 
-                try {
-                    $this->setPictureExample($_GET["format"]);
-                } catch (\Throwable $e) {
+                $this->setPictureExample($_GET["format"]);
 
-                    $this->error =$e->getMessage();
-                }
-            } else if ($format === "Habillage-tablette") {
+            } else if (isset($_GET["format"]) && $_GET["format"] === "Habillage-tablette") {
 
                 $format = $entityManager
                     ->getRepository(FormatAllocineHabillageTablette::class)
                     ->findOneBy(["idFormatAllocineHabillageTablette" => 1 ]);
 
-               try {
                 $this->setPictureExample($_GET["format"]);
-               } catch (\Exception $e) {
 
-               }
-
-
-            } else if ($format === "Demi-page") {
+            } else if (isset($_GET["format"]) && $_GET["format"] === "Demi-page") {
 
                 $format = $entityManager
                     ->getRepository(FormatAllocineDemipage::class)
                     ->findOneBy(["idFormatAllocineDemipage" => 1 ]);
-               try {
+
                 $this->setPictureExample($_GET["format"]);
-               } catch (\Exception $e) {
-
-            }
-
 
             } else {
 
@@ -436,11 +423,10 @@ class AllocineModel
 
     }
 
-    public function box($formatBox, $picture, $uploadError, $formatError) {
+    public function box($formatBox, $picture) {
 
-        if ($picture == null && $uploadError == true && $formatError === $formatBox) {
-            return include(__DIR__ . "/../../app/views/ui/boxErrorUpload.php");
-        } else if ($picture == null) {
+
+        if ($picture == null) {
             return include(__DIR__ . "/../../app/views/ui/boxUpload.php");
         } else {
             return include(__DIR__ . "/../../app/views/ui/boxManage.php");
