@@ -1,6 +1,5 @@
 <?php
 
-
 namespace UPLOADIT\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -25,21 +24,21 @@ class AllocineVague1
     /**
      * @var string
      *
-     * @ORM\Column(name="start_date_allocine_vague1", type="string", length=20, nullable=true)
+     * @ORM\Column(name="start_date_allocine_vague1", type="string", length=10, nullable=true)
      */
     private $startDateAllocineVague1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="start_end_allocine_vague1", type="string", length=20, nullable=true)
+     * @ORM\Column(name="start_end_allocine_vague1", type="string", length=10, nullable=true)
      */
     private $startEndAllocineVague1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="habillage_pc_allocine_vague1", type="string", length=50, nullable=true)
+     * @ORM\Column(name="habillage_pc_allocine_vague1", type="string", length=10, nullable=true)
      */
     private $habillagePcAllocineVague1;
 

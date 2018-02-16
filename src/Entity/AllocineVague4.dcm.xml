@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AllocineVague4" table="allocine_vague4">
+    <indexes>
+      <index name="id_campagne" columns="id_campagne"/>
+    </indexes>
+    <id name="idAllocineVague4" type="integer" column="id_allocine_vague4">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="startDateAllocineVague4" type="string" column="start_date_allocine_vague4" length="10" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+        <option name="comment">Date de départ de diffusion de la vague 4 Allociné</option>
+      </options>
+    </field>
+    <field name="startEndAllocineVague4" type="string" column="start_end_allocine_vague4" length="10" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+        <option name="comment">Date de fin de diffusion de la vague 4 Allociné</option>
+      </options>
+    </field>
+    <field name="habillagePcAllocineVague4" type="string" column="habillage_pc_allocine_vague4" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nom de l'image Uploadé pour le format Habillage PC de la vague 4</option>
+      </options>
+    </field>
+    <field name="habillageMobileAllocineVague4" type="string" column="habillage_mobile_allocine_vague4" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nom de l'image Uploadé pour le format Habillage Smartphone de la vague 4</option>
+      </options>
+    </field>
+    <field name="habillageTabletteAllocineVague4" type="string" column="habillage_tablette_allocine_vague4" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nom de l'image Uploadé pour le format Habillage tablette de la vague 4</option>
+      </options>
+    </field>
+    <field name="demipageAllocineVague4" type="string" column="demipage_allocine_vague4" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nom de l'image Uploadé pour le format Demi-page de la vague 4</option>
+      </options>
+    </field>
+    <many-to-one field="idCampagne" target-entity="Campagne" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_campagne" referenced-column-name="id_campagne"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,6 +1,6 @@
 <?php
-
 namespace UPLOADIT\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 

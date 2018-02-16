@@ -24,14 +24,14 @@ class AllocineVague4
     /**
      * @var string
      *
-     * @ORM\Column(name="start_date_allocine_vague4", type="string", length=20, nullable=true)
+     * @ORM\Column(name="start_date_allocine_vague4", type="string", length=10, nullable=true)
      */
     private $startDateAllocineVague4;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="start_end_allocine_vague4", type="string", length=20, nullable=true)
+     * @ORM\Column(name="start_end_allocine_vague4", type="string", length=10, nullable=true)
      */
     private $startEndAllocineVague4;
 

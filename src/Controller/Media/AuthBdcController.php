@@ -5,7 +5,7 @@ use UPLOADIT\Model\FormBdcModel;
 
 class AuthBdcController {
 
-    public function  manage($failAuth)
+    public function manage($failAuth)
     {
 
        // var_dump('Controller Auth');

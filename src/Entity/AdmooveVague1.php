@@ -1,6 +1,8 @@
 <?php
-
 namespace UPLOADIT\Entity;
+use UPLOADIT\Entity\Campagne;
+
+
 
 use Doctrine\ORM\Mapping as ORM;
 

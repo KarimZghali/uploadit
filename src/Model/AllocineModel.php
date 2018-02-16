@@ -1,8 +1,13 @@
 <?php
 namespace UPLOADIT\Model;
 use function Composer\Autoload\includeFile;
+use UPLOADIT\Entity\AdmooveVague1;
 use UPLOADIT\Entity\Campagne;
 use UPLOADIT\Entity\AllocineVague1;
+use UPLOADIT\Entity\AllocineVague2;
+use UPLOADIT\Entity\AllocineVague3;
+use UPLOADIT\Entity\AllocineVague4;
+use UPLOADIT\Entity\NrjVague1;
 use UPLOADIT\Entity\Commercial;
 use UPLOADIT\Entity\Customer;
 use UPLOADIT\Entity\FormatAllocineHabillageTablette;
@@ -14,7 +19,6 @@ use UPLOADIT\Entity\FormatAllocineHabillageMobile;
 
 class AllocineModel
 {
-
     private $name;
     private $bdc;
     private $width;
@@ -32,18 +36,40 @@ class AllocineModel
     private $habillageMobileVague1;
     private $demiPageVague1;
     private $pictureExample;
+    private $listCommercial;
 
 
+    /**
+     * @return mixed
+     */
+    public function getCommercial()
+    {
+        return $this->commercial;
+    }
 
+    /**
+     * @param mixed $commercial
+     */
+    public function setCommercial($commercial)
+    {
+        $this->commercial = $commercial;
+    }
 
-//    private $technicalSpecifications = [
-//        "txtZone" => "",
-//        "format" => "",
-//        "height" => 0,
-//        "width" => 0,
-//        "size" => 0,
-//    ];
+    /**
+     * @return mixed
+     */
+    public function getListCommercial()
+    {
+        return $this->listCommercial;
+    }
 
+    /**
+     * @param mixed $listCommercial
+     */
+    public function setListCommercial($listCommercial)
+    {
+        $this->listCommercial = $listCommercial;
+    }
 
     /**
      * @return mixed
@@ -254,28 +280,29 @@ class AllocineModel
     }
 
 
-    public function checkBdcPattern($bdc)
-    {
+    // Delete an image
+    public function deletePicture($formatSetBdd, $bdc, $entityManager) {
 
-        $pattern = '/^[wW][1-9][0-9]{4}$/';
+        // Search the campaign id with the BDC
+        $idCampagne = $entityManager->getRepository(Campagne::class)->findOneBy(["numberBdcCampagne" => $bdc]);
 
-        if (preg_match($pattern,$bdc)) {
-//            var_dump('BDC OK !');
+        $DeletePicture = $entityManager->getRepository(AllocineVague1::class)->findOneBy(["idCampagne" => $idCampagne]);
 
-        } else {
+        $setFormat = "set".$formatSetBdd."Vague1";
 
-//            var_dump('BAD bdc!');
-            header('location: ./?failAuth=true');
-        }
+        $DeletePicture->$setFormat(null);
 
+        $entityManager->flush();
     }
 
+    // Check if the campaign already exists in the DB
     public function checkBdcData($bdc, $entityManager)
     {
 
-        $GetCampagne = $entityManager->getRepository(Campagne::class);
-        $GetVague1 = $entityManager->getRepository(AllocineVague1::class);
+        var_dump($entityManager);
 
+        $GetCampagne = $entityManager->getRepository(Campagne::class);
+     //   $GetVague1 = $entityManager->getRepository(AllocineVague1::class);
 
         if (!$GetCampagne->findBy(["numberBdcCampagne" => $bdc])) {
 
@@ -287,28 +314,53 @@ class AllocineModel
             $entityManager->flush();
 
 
-          //  $setVague1->setIdCampagne($GetCampagne->findBy(["numberBdcCampagne" => $bdc]));
-
-
-
-//            $setVague1->setIdCampagne(
-//
-//                $GetCampagne->find($bdc)
-//            );
-
-
             $entityManager->persist($setVague1);
-            $entityManager->flush();
 
 
-        } else {
-          //  var_dump('BDC Déjà existant');
+          //  $this->addPicture("test", $entityManager);
+
+            var_dump('test1');
+
+            $this->addMediaBdc($entityManager, $bdc);
+
+
+           // die("End");
+
         }
 
     }
 
-    public function read($bdc, $entityManager)
+    // Add new media to the campaign
+    public function addMediaBdc($entityManager, $bdc) {
+
+
+
+
+        $campagne = $entityManager->getRepository(Campagne::class);
+        $vague1 = new AllocineVague1();
+
+        $campagneId = $campagne->find(28);
+
+        var_dump($campagneId);
+
+        $vague1->setIdCampagne($campagneId);
+
+
+
+        $entityManager->persist($vague1);
+
+        $entityManager->flush();
+
+        die("End");
+        exit;
+
+    }
+
+    // Recover campaign data
+    public function read($bdc, $entityManager, $format)
     {
+        $formatString = (string)$format;
+
         $campagne = $entityManager
             ->getRepository(Campagne::class)
             ->findOneBy(["numberBdcCampagne" => $bdc]);
@@ -316,7 +368,10 @@ class AllocineModel
 
         $commercialList = $entityManager
             ->getRepository(Commercial::class)
-            ->findAll();
+            ->findBy(array(), array('nameCommercial' => 'ASC'));
+
+
+       // var_dump($commercialList);
 
         $allocineVague1 = $entityManager
             ->getRepository(AllocineVague1::class)
@@ -328,49 +383,62 @@ class AllocineModel
 
 //        if ( isset($_GET["format"]) ) {
 
-           if ( isset($_GET["format"]) && $_GET["format"] === "Habillage-smartphone") {
+        if ($format === "Habillage-smartphone") {
 
-                $format = $entityManager
-                    ->getRepository(FormatAllocineHabillageMobile::class)
-                    ->findOneBy(["idFormatAllocineHabillageMobile" => 1 ]);
+            $format = $entityManager
+                ->getRepository(FormatAllocineHabillageMobile::class)
+                ->findOneBy(["idFormatAllocineHabillageMobile" => 1]);
 
-                $this->setPictureExample($_GET["format"]);
 
-            } else if (isset($_GET["format"]) && $_GET["format"] === "Habillage-tablette") {
+            $this->setPictureExample($formatString);
 
-                $format = $entityManager
-                    ->getRepository(FormatAllocineHabillageTablette::class)
-                    ->findOneBy(["idFormatAllocineHabillageTablette" => 1 ]);
 
-                $this->setPictureExample($_GET["format"]);
+        } else if ($format === "Habillage-tablette") {
 
-            } else if (isset($_GET["format"]) && $_GET["format"] === "Demi-page") {
+            $format = $entityManager
+                ->getRepository(FormatAllocineHabillageTablette::class)
+                ->findOneBy(["idFormatAllocineHabillageTablette" => 1]);
 
-                $format = $entityManager
-                    ->getRepository(FormatAllocineDemipage::class)
-                    ->findOneBy(["idFormatAllocineDemipage" => 1 ]);
 
-                $this->setPictureExample($_GET["format"]);
+            $this->setPictureExample($formatString);
 
-            } else {
 
-                $format = $entityManager
-                    ->getRepository(FormatAllocineHabillagePc::class)
-                    ->findOneBy(["idFormatAllocineHabillagePc" => 1 ]);
+        } else if ($format === "Demi-page") {
 
-                $this->setPictureExample("Habillge-Pc");
+            $format = $entityManager
+                ->getRepository(FormatAllocineDemipage::class)
+                ->findOneBy(["idFormatAllocineDemipage" => 1]);
 
-            }
+            $this->setPictureExample($formatString);
+
+
+        } else {
+
+            $format = $entityManager
+                ->getRepository(FormatAllocineHabillagePc::class)
+                ->findOneBy(["idFormatAllocineHabillagePc" => 1]);
+
+            $this->setPictureExample("Habillge-Pc");
+
+        }
 //        }
 
         $this->setBdc($campagne->getNumberBdcCampagne());
         $this->setHeight($format->getHeight());
         $this->setWidth($format->getWidth());
-        $this->setWeight( ($format->getWeight())/100 );
+        $this->setWeight(($format->getWeight()) / 100);
         $this->setHabillageTabletteVague1($allocineVague1->getHabillageTabletteAllocineVague1());
         $this->setHabillagePCVague1($allocineVague1->getHabillagePcAllocineVague1());
         $this->setHabillageMobileVague1($allocineVague1->getHabillageMobileAllocineVague1());
         $this->setDemiPageVague1($allocineVague1->getDemipageAllocineVague1());
+        $this->setListCommercial($commercialList);
+
+        if ($campagne->getIdCommercial() == null) {
+            $this->setCommercial(212);
+        } else {
+            $this->setCommercial($campagne->getIdCommercial()->getIdCommercial());
+        }
+
 
 
         if ($format->gettextZone() == false) {
@@ -379,31 +447,33 @@ class AllocineModel
             $this->setTxtZone("oui");
         }
 
-        if ($format->getGif() == false ) {
-            $this.$this->setGif("jpeg / jpg / png / gif");
+        if ($format->getGif() == false) {
+            $this . $this->setGif("jpeg / jpg / png / gif");
         } else {
             $this->setGif("jpeg / jpg / png");
         }
 
     }
 
-    public function addCustomer($bdc, $emailCustomer, $entityManager) {
-
+    //Add a customer to the campaign
+    public function addCustomer($bdc, $emailCustomer, $entityManager)
+    {
         $getCustomer = $entityManager->getRepository(Customer::class);
         $customer = new Customer();
         $campaign = new Campagne();
+
 
         if (!$getCustomer->findBy(["emailCustomer" => $emailCustomer])) {
 
             $customer->setEmailCustomer($emailCustomer);
             $entityManager->persist($customer);
-           // $entityManager->flush();
+            // $entityManager->flush();
 
         }
 
 
-        $campaign->setIdCustomer( $getCustomer->findOneBy(["emailCustomer" => $emailCustomer ]) )
-            ->findOneBy(["numberBdcCampagne" => $bdc ]);
+        $campaign->setIdCustomer($getCustomer->findOneBy(["emailCustomer" => $emailCustomer]))
+            ->findOneBy(["numberBdcCampagne" => $bdc]);
 
 
 //        $campaign->setIdCustomer( $getCustomer->findOneBy(["emailCustomer" => $emailCustomer ]) )
@@ -419,18 +489,46 @@ class AllocineModel
         $entityManager->flush();
 
 
+    }
 
+    // Add an uploaded image to the DB
+    public function addPicture($fileName, $entityManager, $bdc, $formatSetBdd)
+    {
+      //  $GetCampagne = $entityManager->getRepository(Campagne::class);
+      //  $campagne = $GetAllocineV1->find(13);
+
+
+
+        // Rechercher le l'id de la campagne grace à BDC
+        $idCampagne = $entityManager->getRepository(Campagne::class)->findOneBy(["numberBdcCampagne" => $bdc]);
+
+        $addPictures = $entityManager->getRepository(AllocineVague1::class)->findOneBy(["idCampagne" => $idCampagne]);
+
+        $setFormat = "set".$formatSetBdd."Vague1";
+
+        $addPictures->$setFormat($fileName);
+
+        $entityManager->flush();
 
     }
 
-    public function box($formatBox, $picture) {
+    // Add a commercial to the campaign
+    public function AddCommercial($bdc, $entityManager, $commercialId)
+    {
 
+        var_dump($commercialId);
 
-        if ($picture == null) {
-            return include(__DIR__ . "/../../app/views/ui/boxUpload.php");
-        } else {
-            return include(__DIR__ . "/../../app/views/ui/boxManage.php");
-        }
+        // Search campaign ID with BDC
+        $getCampagne = $entityManager->getRepository(Campagne::class)->findOneBy(["numberBdcCampagne" => $bdc]);
+
+        var_dump($getCampagne);
+
+        $getCommercial = $entityManager->getRepository(Commercial::class)->find($commercialId);
+
+        var_dump($getCommercial);
+
+        $getCampagne->setIdCommercial($getCommercial);
+
+        $entityManager->flush();
     }
-
 }

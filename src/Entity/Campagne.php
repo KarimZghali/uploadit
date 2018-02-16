@@ -1,6 +1,6 @@
 <?php
-
 namespace UPLOADIT\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,7 +24,7 @@ class Campagne
     /**
      * @var string
      *
-     * @ORM\Column(name="number_bdc_campagne", type="string", length=6, nullable=false)
+     * @ORM\Column(name="number_bdc_campagne", type="string", length=10, nullable=false)
      */
     private $numberBdcCampagne;
 

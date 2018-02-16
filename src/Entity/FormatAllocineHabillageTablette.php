@@ -1,6 +1,6 @@
 <?php
-
 namespace UPLOADIT\Entity;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -64,6 +64,7 @@ class FormatAllocineHabillageTablette
     private $textZone;
 
 
+
     /**
      * Set name
      *
@@ -73,7 +74,7 @@ class FormatAllocineHabillageTablette
      */
     public function setName($name)
     {
-        $this->weight = $name;
+        $this->name = $name;
 
         return $this;
     }

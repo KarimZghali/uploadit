@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FormatAdmooveInterstitiel" table="format_admoove_interstitiel">
+    <id name="idFormatAdmooveInterstitiel" type="integer" column="id_format_admoove_interstitiel">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="weight" type="integer" column="weight" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Poids maximum que peut avoir l'interstitiel AdMoove</option>
+      </options>
+    </field>
+    <field name="height" type="integer" column="height" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Hauteur que doit avoir l'interstitiel AdMoove</option>
+      </options>
+    </field>
+    <field name="width" type="integer" column="width" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Largeur que doit avoir l'interstitiel AdMoove</option>
+      </options>
+    </field>
+    <field name="gif" type="boolean" column="gif" nullable="false">
+      <options>
+        <option name="comment">Définit si le format GIF est accepté pour le format interstitiel AdMoove</option>
+      </options>
+    </field>
+    <field name="textZone" type="boolean" column="text_zone" nullable="false">
+      <options>
+        <option name="comment">Définit si une zone de texte est à respecter sur le format interstitiel AdMoove</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>
