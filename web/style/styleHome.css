@@ -60,6 +60,7 @@
 .valid-form {
     width:100px;
     margin: auto;
+    margin-top: -20px;
 }
 
 .btn-valid {
@@ -73,6 +74,7 @@
     text-align: center;
     background-color: #03A9F4;
     transition: all 0.5s;
+
 }
 
 .btn-valid:hover{
@@ -80,6 +82,15 @@
     background-color: white;
 
     color: #03A9F4;
+}
+
+.alert {
+    background-color: red;
+    opacity: 0.5;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 22px;
 }
 
 

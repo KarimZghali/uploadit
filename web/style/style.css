@@ -128,7 +128,8 @@ text-align: center;
 }
 
 .img {
-    width:100%;
+   max-width:380px;
+
 }
 
 .txt-tech-spec {
@@ -267,6 +268,18 @@ text-align: center;
     color: white;
 }
 
+.error-upload {
+    margin-top: 2px;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: red;
+    opacity: 0.5;
+    color: white;
+}
+
 .btn-ts {
     margin-top: 3px;
     text-align: center;
@@ -315,10 +328,37 @@ text-align: center;
 
 }
 
+a {
+     color: white;
+    transition: all 1s;
+ }
 
+a:hover {
+    color: white;
 
+}
 
+.template {
 
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    margin-top: 5px;
+
+}
+
+.linkHelp {
+    color: #2aabd2;
+}
+
+.linkHelp:hover {
+    color: #2aabd2;
+
+}
+
+option {
+    font-family: arial;
+}
 
 
 
