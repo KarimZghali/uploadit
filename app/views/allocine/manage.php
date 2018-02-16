@@ -4,7 +4,10 @@ include(__DIR__."/../header.php");
 
 ?>
 
+
+
 <body>
+
 
     <div id="container" class="">
 
@@ -20,13 +23,16 @@ include(__DIR__."/../header.php");
             </div>
 
             <div id="form-info">
-                <form method="post" action="/uploadit/web/?bdc=W11911&media=allocine" class="">
+                <form method="post" action="/uploadit/web/?bdc=W11911&media=allocine">
                         <div class="flex">
                             <label class="" for="selectbasic">Commercial</label>
                             <div class="">
-                                <select id="selectbasic" name="selectbasic" class="">
-                                    <option value="1">Option one</option>
-                                    <option value="2">Option two</option>
+                                <select id="select-commercial" name="select-commercial" class="">
+                                    <?php foreach ($model->getListCommercial() as $value) {?>
+                                    <option value="<?php echo $value->getIdCommercial() ?>" <?php if($model->getCommercial() === $value->getIdCommercial()) {echo "selected";} ?>>
+                                        <?php echo $value->getNameCommercial() ?>
+                                    </option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -104,10 +110,10 @@ include(__DIR__."/../header.php");
                 <form method="get" action="" class=''>
 
                     <label class="align test" for="textinput">Periode 1 du</label>
-                    <input id="textinput" name="textinput" type="date" placeholder="" class="align" required="">
+                    <input id="textinput" name="textinput" type="date" placeholder="" class="align" required>
                     <label class="align" for="textinput">au</label>
 
-                    <input id="textinput" name="textinput" type="date" placeholder="" class="align" required="">
+                    <input id="textinput" name="textinput" type="date" placeholder="" class="align" required>
 
                     <div id="btn-date" class="align">
 
@@ -120,6 +126,7 @@ include(__DIR__."/../header.php");
             </div>
 
             <div id="pictures-manage" class=''>
+
 
                 <div class="col-box">
 
@@ -161,4 +168,4 @@ include(__DIR__."/../header.php");
 
     </div>
 
-</body>
+ </body>

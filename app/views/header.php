@@ -10,9 +10,17 @@
     <link href="./../web/style/styleHome.css" rel="stylesheet" >
     <title>Upload'it</title>
 
-
-
 </head>
+
+
+<script language="JavaScript">
+    function conf(){
+        if ( confirm("Êtes-vous sûr de vouloir supprimer cette image ? Ceci est irreversible.") )
+            return true ;
+        else
+            return false ;
+    }
+</script>
 
 
 
