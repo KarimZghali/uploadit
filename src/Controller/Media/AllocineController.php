@@ -43,9 +43,9 @@ class AllocineController extends Controller
 
         $entityManager = require_once join(DIRECTORY_SEPARATOR, [__DIR__, '/../../../bootstrap.php']);
 
-        var_dump($entityManager);
+//         var_dump($entityManager);
 
-        die("??");
+//         die("??");
 
         $model = new AllocineModel();
 

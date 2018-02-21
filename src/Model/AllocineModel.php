@@ -299,7 +299,7 @@ class AllocineModel
     public function checkBdcData($bdc, $entityManager)
     {
 
-        var_dump($entityManager);
+//         var_dump($entityManager);
 
         $GetCampagne = $entityManager->getRepository(Campagne::class);
      //   $GetVague1 = $entityManager->getRepository(AllocineVague1::class);
@@ -341,7 +341,7 @@ class AllocineModel
 
         $campagneId = $campagne->find(28);
 
-        var_dump($campagneId);
+//         var_dump($campagneId);
 
         $vague1->setIdCampagne($campagneId);
 
@@ -351,8 +351,8 @@ class AllocineModel
 
         $entityManager->flush();
 
-        die("End");
-        exit;
+//         die("End");
+//         exit;
 
     }
 
@@ -516,16 +516,16 @@ class AllocineModel
     public function AddCommercial($bdc, $entityManager, $commercialId)
     {
 
-        var_dump($commercialId);
+//         var_dump($commercialId);
 
         // Search campaign ID with BDC
         $getCampagne = $entityManager->getRepository(Campagne::class)->findOneBy(["numberBdcCampagne" => $bdc]);
 
-        var_dump($getCampagne);
+//         var_dump($getCampagne);
 
         $getCommercial = $entityManager->getRepository(Commercial::class)->find($commercialId);
 
-        var_dump($getCommercial);
+//         var_dump($getCommercial);
 
         $getCampagne->setIdCommercial($getCommercial);
 
