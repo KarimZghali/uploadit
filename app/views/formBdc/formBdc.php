@@ -20,7 +20,7 @@ include(__DIR__."/../header.php");
 
 
         <div id="form-block">
-            <form method="get" action="">
+            <form method="get" action="/uploadit/web/">
 
                 <div id="bdc-block" class="form-group">
                     <label for="bdc">Votre numéro de bon de commande :</label>

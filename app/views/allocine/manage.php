@@ -23,7 +23,7 @@ include(__DIR__."/../header.php");
             </div>
 
             <div id="form-info">
-                <form method="post" action="/uploadit/web/?bdc=W11911&media=allocine">
+                <form method="post" action="/uploadit/web/?bdc=<?php echo $model->getBdc(); ?>&media=allocine">
                         <div class="flex">
                             <label class="" for="selectbasic">Commercial</label>
                             <div class="">
@@ -41,7 +41,7 @@ include(__DIR__."/../header.php");
                         <div class="flex form-info">
                             <label class="" for="textinput">Email client</label>
                             <div class="">
-                                <input id="email-customer" name="email-customer" type="email" placeholder="" class="" required="">
+                                <input id="email-customer" name="email-customer" type="email" value="<?php echo $model->getCustomer() ?>" class="" required="">
 
                             </div>
                         </div>
@@ -95,7 +95,7 @@ include(__DIR__."/../header.php");
 
                 <div id="logo" class=""><img src="./../resources/logo allocine.jpg" alt="logo Upload'it" id="img-logo"></div>
 
-                <div id="date-select" class="flex">
+                <div id="date-select" class="flex" style="display: none;">
                     <div id="btn-date1" class="btn-date ">Période 1</div>
                     <div id="btn-date2" class="btn-date ">Période 2</div>
                     <div id="btn-date3" class="btn-date ">Période 3</div>
@@ -105,15 +105,15 @@ include(__DIR__."/../header.php");
 
             </div>
 
-            <div id="date-edit" class=''>
+            <div id="date-edit" class='' style="display: none;">
 
                 <form method="get" action="" class=''>
 
                     <label class="align test" for="textinput">Periode 1 du</label>
-                    <input id="textinput" name="textinput" type="date" placeholder="" class="align" required>
+                    <input id="textinput" name="textinput" type="date" placeholder="" class="align input" required>
                     <label class="align" for="textinput">au</label>
 
-                    <input id="textinput" name="textinput" type="date" placeholder="" class="align" required>
+                    <input id="textinput" name="textinput" type="date" placeholder="" class="align input" required>
 
                     <div id="btn-date" class="align">
 
@@ -132,13 +132,13 @@ include(__DIR__."/../header.php");
 
                     <div id="habillage-pc" class='box shadow-box'>
 
-                           <?php echo $this->boxView("Habillage-Pc", $model, $model->getHabillagePcVague1()); ?>
+                           <?php echo $this->boxView($model::$format1, $model, $model->getPictureFormat1()); ?>
 
                     </div>
 
                     <div id="habillage-mobile"class='box shadow-box'>
 
-                        <?php $this->boxView("Habillage-smartphone", $model, $model->getHabillageMobileVague1()); ?>
+                        <?php if(isset($model::$format2)){ $this->boxView($model::$format2, $model, $model->getPictureFormat2());} ?>
 
                     </div>
 
@@ -148,13 +148,13 @@ include(__DIR__."/../header.php");
 
                     <div id="habillage-tablette"class='box shadow-box'>
 
-                        <?php $this->boxView("Habillage-tablette", $model, $model->getHabillageTabletteVague1()); ?>
+                        <?php if(isset($model::$format3)){  $this->boxView($model::$format3, $model, $model->getPictureFormat3()); } ?>
 
                     </div>
 
                     <div id="habillage-dp"class='box shadow-box'>
 
-                        <?php $this->boxView("Demi-page", $model, $model->getDemiPageVague1()); ?>
+                        <?php if(isset($model::$format4)){  $this->boxView($model::$format4, $model, $model->getPictureFormat4()); } ?>
 
                     </div>
 
