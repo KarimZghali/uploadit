@@ -8,6 +8,9 @@ use UPLOADIT\Controller\Admin\AdminControler;
 
 require "./../vendor/autoload.php";
 
+
+$entityManager = require __DIR__ . "/../bootstrap.php";
+
 try {
 
     //recovering data from the URL
@@ -22,9 +25,16 @@ try {
         $failAuth = true;
     }
 
+//    $route = [
+//        "allocine" => AllocineController::class,
+//        "admoove"  => AdmooveController::class,
+//        "nrj"      => NrjController::class,
+//        "admin"    => AdminControler::class,
+//    ];
+
     $route = [
         "allocine" => AllocineController::class,
-        "admoove"  => AdmooveController::class,
+        "admoove"  => AllocineController::class,
         "nrj"      => NrjController::class,
         "admin"    => AdminControler::class,
     ];

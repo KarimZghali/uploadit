@@ -356,9 +356,12 @@ a:hover {
 
 }
 
-option {
+
+#select-commercial, input, .input {
     font-family: arial;
+    font-size: 15px;
 }
+
 
 
 
