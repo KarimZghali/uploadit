@@ -1,6 +1,6 @@
 <?php
-namespace UPLOADIT\Entity;
 
+namespace UPLOADIT\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,20 +13,20 @@ use Doctrine\ORM\Mapping as ORM;
 class Campagne
 {
     /**
+     * @var string
+     *
+     * @ORM\Column(name="number_bdc_campagne", type="string", length=6, nullable=false)
+     */
+    private $numberBdcCampagne;
+
+    /**
      * @var integer
      *
-     * @ORM\Column(name="id_campagne", type="integer", nullable=false)
+     * @ORM\Column(name="id_campagne", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idCampagne;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="number_bdc_campagne", type="string", length=10, nullable=false)
-     */
-    private $numberBdcCampagne;
 
     /**
      * @var \Customer
@@ -91,7 +91,7 @@ class Campagne
      *
      * @return Campagne
      */
-    public function setIdCustomer(\UPLOADIT\Entity\Customer $idCustomer = null)
+    public function setIdCustomer(\Customer $idCustomer = null)
     {
         $this->idCustomer = $idCustomer;
 
@@ -115,7 +115,7 @@ class Campagne
      *
      * @return Campagne
      */
-    public function setIdCommercial(\UPLOADIT\Entity\Commercial $idCommercial = null)
+    public function setIdCommercial(\Commercial $idCommercial = null)
     {
         $this->idCommercial = $idCommercial;
 

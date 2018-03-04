@@ -1,0 +1,40 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commercial
+ *
+ * @ORM\Table(name="commercial")
+ * @ORM\Entity
+ */
+class Commercial
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_commercial", type="string", length=30, nullable=false)
+     */
+    private $nameCommercial;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email_commercial", type="string", length=30, nullable=false)
+     */
+    private $emailCommercial;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_commercial", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCommercial;
+
+
+}
+

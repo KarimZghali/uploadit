@@ -112,7 +112,7 @@ class NrjVague1
      *
      * @return NrjVague1
      */
-    public function setIdCampagne(\Campagne $idCampagne = null)
+    public function setIdCampagne(\UPLOADIT\Entity\Campagne $idCampagne = null)
     {
         $this->idCampagne = $idCampagne;
 

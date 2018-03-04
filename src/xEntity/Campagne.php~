@@ -1,0 +1,53 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Campagne
+ *
+ * @ORM\Table(name="campagne", indexes={@ORM\Index(name="id_customer", columns={"id_customer"}), @ORM\Index(name="id_commercial", columns={"id_commercial"})})
+ * @ORM\Entity
+ */
+class Campagne
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="number_bdc_campagne", type="string", length=6, nullable=false)
+     */
+    private $numberBdcCampagne;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_campagne", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCampagne;
+
+    /**
+     * @var \Customer
+     *
+     * @ORM\ManyToOne(targetEntity="Customer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_customer", referencedColumnName="id_customer")
+     * })
+     */
+    private $idCustomer;
+
+    /**
+     * @var \Commercial
+     *
+     * @ORM\ManyToOne(targetEntity="Commercial")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_commercial", referencedColumnName="id_commercial")
+     * })
+     */
+    private $idCommercial;
+
+
+}
+

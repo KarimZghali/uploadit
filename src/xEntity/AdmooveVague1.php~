@@ -1,0 +1,64 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AdmooveVague1
+ *
+ * @ORM\Table(name="admoove_vague1", indexes={@ORM\Index(name="id_campagne", columns={"id_campagne"})})
+ * @ORM\Entity
+ */
+class AdmooveVague1
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="interstitiel_admoove_vague1", type="string", length=50, nullable=true)
+     */
+    private $interstitielAdmooveVague1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="banniere_admoove_vague1", type="string", length=50, nullable=true)
+     */
+    private $banniereAdmooveVague1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pige_admoove_vague1", type="string", length=50, nullable=true)
+     */
+    private $pigeAdmooveVague1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bilan_admoove_vague1", type="string", length=50, nullable=true)
+     */
+    private $bilanAdmooveVague1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_admoove_vague1", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAdmooveVague1;
+
+    /**
+     * @var \Campagne
+     *
+     * @ORM\ManyToOne(targetEntity="Campagne")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_campagne", referencedColumnName="id_campagne")
+     * })
+     */
+    private $idCampagne;
+
+
+}
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdmooveVague1" table="admoove_vague1">
+    <indexes>
+      <index name="id_campagne" columns="id_campagne"/>
+    </indexes>
+    <id name="idAdmooveVague1" type="integer" column="id_admoove_vague1">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="interstitielAdmooveVague1" type="string" column="interstitiel_admoove_vague1" length="50" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="banniereAdmooveVague1" type="string" column="banniere_admoove_vague1" length="50" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="pigeAdmooveVague1" type="string" column="pige_admoove_vague1" length="50" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="bilanAdmooveVague1" type="string" column="bilan_admoove_vague1" length="50" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <many-to-one field="idCampagne" target-entity="Campagne" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_campagne" referenced-column-name="id_campagne"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

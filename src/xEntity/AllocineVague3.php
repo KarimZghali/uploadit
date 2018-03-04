@@ -1,6 +1,6 @@
 <?php
-namespace UPLOADIT\Entity;
 
+namespace UPLOADIT\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,25 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class AllocineVague3
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_allocine_vague2", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idAllocineVague2;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="start_date_allocine_vague3", type="string", length=10, nullable=true)
+     * @ORM\Column(name="start_date_allocine_vague3", type="string", length=20, nullable=true)
      */
     private $startDateAllocineVague3;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="start_end_allocine_vague3", type="string", length=10, nullable=true)
+     * @ORM\Column(name="start_end_allocine_vague3", type="string", length=20, nullable=true)
      */
     private $startEndAllocineVague3;
 
@@ -62,6 +53,15 @@ class AllocineVague3
      * @ORM\Column(name="demipage_allocine_vague3", type="string", length=50, nullable=true)
      */
     private $demipageAllocineVague3;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_allocine_vague2", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAllocineVague2;
 
     /**
      * @var \Campagne
@@ -236,7 +236,7 @@ class AllocineVague3
      *
      * @return AllocineVague3
      */
-    public function setIdCampagne(\UPLOADIT\Entity\Campagne $idCampagne = null)
+    public function setIdCampagne(Campagne $idCampagne = null)
     {
         $this->idCampagne = $idCampagne;
 

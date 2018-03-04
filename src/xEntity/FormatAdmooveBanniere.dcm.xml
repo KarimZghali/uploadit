@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FormatAdmooveBanniere" table="format_admoove_banniere">
+    <id name="idFormatAdmooveBanniere" type="integer" column="id_format_admoove_banniere">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="weight" type="integer" column="weight" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="height" type="integer" column="height" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="width" type="integer" column="width" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="gif" type="boolean" column="gif" nullable="false"/>
+    <field name="textZone" type="boolean" column="text_zone" nullable="false"/>
+  </entity>
+</doctrine-mapping>

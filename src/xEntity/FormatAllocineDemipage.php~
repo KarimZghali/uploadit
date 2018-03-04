@@ -1,0 +1,61 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * FormatAllocineDemipage
+ *
+ * @ORM\Table(name="format_allocine_demipage")
+ * @ORM\Entity
+ */
+class FormatAllocineDemipage
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="weight", type="integer", nullable=false)
+     */
+    private $weight;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="height", type="integer", nullable=false)
+     */
+    private $height;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="width", type="integer", nullable=false)
+     */
+    private $width;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="gif", type="boolean", nullable=false)
+     */
+    private $gif;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="text_zone", type="boolean", nullable=false)
+     */
+    private $textZone;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_format_allocine_demipage", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idFormatAllocineDemipage;
+
+
+}
+

@@ -1,0 +1,78 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AllocineVague1
+ *
+ * @ORM\Table(name="allocine_vague1", indexes={@ORM\Index(name="id_campagne", columns={"id_campagne"})})
+ * @ORM\Entity
+ */
+class AllocineVague1
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="start_date_allocine_vague1", type="string", length=20, nullable=true)
+     */
+    private $startDateAllocineVague1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="start_end_allocine_vague1", type="string", length=20, nullable=true)
+     */
+    private $startEndAllocineVague1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="habillage_pc_allocine_vague1", type="string", length=50, nullable=true)
+     */
+    private $habillagePcAllocineVague1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="habillage_mobile_allocine_vague1", type="string", length=50, nullable=true)
+     */
+    private $habillageMobileAllocineVague1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="habillage_tablette_allocine_vague1", type="string", length=50, nullable=true)
+     */
+    private $habillageTabletteAllocineVague1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="demipage_allocine_vague1", type="string", length=50, nullable=true)
+     */
+    private $demipageAllocineVague1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_allocine_vague1", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAllocineVague1;
+
+    /**
+     * @var \Campagne
+     *
+     * @ORM\ManyToOne(targetEntity="Campagne")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_campagne", referencedColumnName="id_campagne")
+     * })
+     */
+    private $idCampagne;
+
+
+}
+

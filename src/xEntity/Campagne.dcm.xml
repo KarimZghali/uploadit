@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Campagne" table="campagne">
+    <indexes>
+      <index name="id_customer" columns="id_customer"/>
+      <index name="id_commercial" columns="id_commercial"/>
+    </indexes>
+    <id name="idCampagne" type="integer" column="id_campagne">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="numberBdcCampagne" type="string" column="number_bdc_campagne" length="6" nullable="false">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <many-to-one field="idCustomer" target-entity="Customer" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_customer" referenced-column-name="id_customer"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCommercial" target-entity="Commercial" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_commercial" referenced-column-name="id_commercial"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

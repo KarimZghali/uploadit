@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AllocineVague1" table="allocine_vague1">
+    <indexes>
+      <index name="id_campagne" columns="id_campagne"/>
+    </indexes>
+    <id name="idAllocineVague1" type="integer" column="id_allocine_vague1">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="startDateAllocineVague1" type="string" column="start_date_allocine_vague1" length="20" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="startEndAllocineVague1" type="string" column="start_end_allocine_vague1" length="20" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="habillagePcAllocineVague1" type="string" column="habillage_pc_allocine_vague1" length="50" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="habillageMobileAllocineVague1" type="string" column="habillage_mobile_allocine_vague1" length="50" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="habillageTabletteAllocineVague1" type="string" column="habillage_tablette_allocine_vague1" length="50" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <field name="demipageAllocineVague1" type="string" column="demipage_allocine_vague1" length="50" nullable="true">
+      <options>
+        <option name="fixed">1</option>
+      </options>
+    </field>
+    <many-to-one field="idCampagne" target-entity="Campagne" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_campagne" referenced-column-name="id_campagne"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

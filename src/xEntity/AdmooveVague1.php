@@ -1,8 +1,7 @@
 <?php
+
 namespace UPLOADIT\Entity;
 use UPLOADIT\Entity\Campagne;
-
-
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AdmooveVague1
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_admoove_vague1", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idAdmooveVague1;
-
     /**
      * @var string
      *
@@ -50,6 +40,15 @@ class AdmooveVague1
      * @ORM\Column(name="bilan_admoove_vague1", type="string", length=50, nullable=true)
      */
     private $bilanAdmooveVague1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_admoove_vague1", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAdmooveVague1;
 
     /**
      * @var \Campagne
@@ -176,7 +175,7 @@ class AdmooveVague1
      *
      * @return AdmooveVague1
      */
-    public function setIdCampagne(\UPLOADIT\Entity\Campagne $idCampagne = null)
+    public function setIdCampagne(Campagne $idCampagne = null)
     {
         $this->idCampagne = $idCampagne;
 

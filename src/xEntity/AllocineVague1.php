@@ -1,5 +1,6 @@
 <?php
 
+
 namespace UPLOADIT\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -13,32 +14,23 @@ use Doctrine\ORM\Mapping as ORM;
 class AllocineVague1
 {
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_allocine_vague1", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idAllocineVague1;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="start_date_allocine_vague1", type="string", length=10, nullable=true)
+     * @ORM\Column(name="start_date_allocine_vague1", type="string", length=20, nullable=true)
      */
     private $startDateAllocineVague1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="start_end_allocine_vague1", type="string", length=10, nullable=true)
+     * @ORM\Column(name="start_end_allocine_vague1", type="string", length=20, nullable=true)
      */
     private $startEndAllocineVague1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="habillage_pc_allocine_vague1", type="string", length=10, nullable=true)
+     * @ORM\Column(name="habillage_pc_allocine_vague1", type="string", length=50, nullable=true)
      */
     private $habillagePcAllocineVague1;
 
@@ -64,9 +56,18 @@ class AllocineVague1
     private $demipageAllocineVague1;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_allocine_vague1", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idAllocineVague1;
+
+    /**
      * @var \Campagne
      *
-     * @ORM\ManyToOne(targetEntity="\UPLOADIT\Entity\Campagne", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Campagne", cascade={"persist", "remove"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_campagne", referencedColumnName="id_campagne")
      * })
@@ -232,11 +233,11 @@ class AllocineVague1
     /**
      * Set idCampagne
      *
-     * @param \UPLOADIT\Entity\Campagne $idCampagne
+     * @param \Campagne $idCampagne
      *
      * @return AllocineVague1
      */
-    public function setIdCampagne(\UPLOADIT\Entity\Campagne $idCampagne = null)
+    public function setIdCampagne(Campagne $idCampagne = null)
     {
         $this->idCampagne = $idCampagne;
 
@@ -246,7 +247,7 @@ class AllocineVague1
     /**
      * Get idCampagne
      *
-     * @return \UPLOADIT\Entity\Campagne
+     * @return \Campagne
      */
     public function getIdCampagne()
     {
