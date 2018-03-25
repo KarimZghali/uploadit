@@ -128,7 +128,8 @@ text-align: center;
 }
 
 .img {
-   max-width:380px;
+   max-width:100%;
+    max-height: 500px;
 
 }
 
@@ -237,7 +238,9 @@ text-align: center;
     width:400px;
     height: 250px;
     background-color: #EEEEEE;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 
 }
@@ -248,6 +251,7 @@ text-align: center;
     margin-top: 15px;
     flex-wrap: wrap;
 }
+
 
 .tilte-box {
     text-align: center;

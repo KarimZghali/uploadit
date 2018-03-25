@@ -33,21 +33,23 @@ try {
 //    ];
 
     $route = [
-        "allocine" => AllocineController::class,
-        "admoove"  => AllocineController::class,
-        "nrj"      => NrjController::class,
-        "admin"    => AdminControler::class,
+        "Allocine" => AllocineController::class,
+        "Admoove"  => AllocineController::class,
+        "Nrj"      => NrjController::class,
+        "Admin"    => AdminControler::class,
     ];
 
-    //Searching for correspondence with URL data
+    // ROUTER - Searching for correspondence with URL data
     foreach ($route as $routeValue => $className) {
 
+        //MATCHING
         if ($media == $routeValue) {
             $controller = new $className;
+
+            //DISPATCHING
             $response = $controller->{'manage'}($bdc, $media, $emailCustomer);
             break;
         }
-
     }
 
     // if no correspondence with the URL data
