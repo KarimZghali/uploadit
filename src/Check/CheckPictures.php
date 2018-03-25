@@ -14,13 +14,9 @@ class CheckPictures
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-
         // Recovering the height and width of the uploaded file
         $tmp=$_FILES["file-".$format]['tmp_name'];
         list($width,$height)=getimagesize($tmp);
-
-
-
 
         //Rename files
         $infosfichier = pathinfo($_FILES["file-".$format]['name']);
@@ -28,8 +24,7 @@ class CheckPictures
         $name = $infosfichier['filename'];
         $file = $bdc.' - '.$format.'.'.$extension_upload;
 
-
-// Check if image file is a actual image or fake image
+        // Check if image file is a actual image or fake image
         if(isset($_POST["upload"])) {
             $check = getimagesize($_FILES["file-".$format]["tmp_name"]);
             if($check !== false) {
@@ -40,13 +35,13 @@ class CheckPictures
                 $uploadOk = 0;
             }
         }
-// Check if file already exists
+        // Check if file already exists
         if (file_exists($target_file)) {
             $errorUpload = $errorUpload."Un visuel existe déjà pour cette campagne<br/>";
             $uploadOk = 0;
         }
 
-// Check file size
+        // Check file size
         if ($_FILES["file-".$format]["size"] > $mediaObj->getWeight() * 1000) {
             $gap = ($_FILES["file-".$format]["size"]/1000) - $mediaObj->getWeight();
             $errorUpload =  $errorUpload."Votre fichier est trop lourd, il dépasse de ".$gap."ko<br>";
@@ -63,23 +58,26 @@ class CheckPictures
             $uploadOk = 0;
         }
 
-// Allow certain file formats
+        // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
             $errorUpload = $errorUpload."Le ".$extension_upload." n'est pas accépté (jpeg, jpg, png, gif uniquement)<br/>";
             $uploadOk = 0;
         }
-// Check if $uploadOk is set to 0 by an error
+
+        // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
             return $errorUpload;
-// if everything is ok, try to upload file
+
+        // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($_FILES["file-".$format]["tmp_name"], $target_dir . $file)) {
 
-                $mediaObj->addPicture($file, $entityManager, $bdc, $formatSetBdd);
+                $mediaObj->addPicture($file, $entityManager, $bdc, $formatSetBdd, $format);
 
                 return $errorUpload;
             } else {
+
                 return $errorUpload."Désolé, une erreur s'est produite lors de l'Upload de votre fichier";
             }
         }

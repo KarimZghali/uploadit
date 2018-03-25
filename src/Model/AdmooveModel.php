@@ -4,6 +4,8 @@ namespace UPLOADIT\Model;
 
 use UPLOADIT\Entity\Campagne;
 use UPLOADIT\Entity\AdmooveVague1;
+use UPLOADIT\Entity\FormatAdmooveBanniere;
+use UPLOADIT\Entity\FormatAdmooveInterstitiel;
 use UPLOADIT\Entity\FormatAllocineHabillageTablette;
 use UPLOADIT\Entity\FormatAllocineHabillagePc;
 use UPLOADIT\Entity\FormatAllocineDemipage;
@@ -16,7 +18,7 @@ class AdmooveModel extends Media
     private $pictureFormat1;
     private $pictureFormat2;
     public static $format1 = "Interstitiel";
-    public static $format2 = "Bannière Admoove";
+    public static $format2 = "Bannière-Admoove";
 
 
     /**
@@ -39,6 +41,7 @@ class AdmooveModel extends Media
      * @return mixed
      */
     public function getPictureFormat2()
+
     {
         return $this->pictureFormat2;
     }
@@ -57,8 +60,6 @@ class AdmooveModel extends Media
     public function readMedia($bdc, $entityManager, $format) {
 
         $formatString = (string)$format;
-        var_dump($formatString);
-
 
         $campagne = $entityManager
             ->getRepository(Campagne::class)
@@ -68,22 +69,21 @@ class AdmooveModel extends Media
             ->getRepository(AdmooveVague1::class)
             ->findOneBy(["idCampagne" => $campagne->getIdCampagne()]);
 
-        if ($format === "Bannière") {
+        if ($format === "Bannière-Admoove") {
 
             $format = $entityManager
-                ->getRepository(FormatAllocineHabillageMobile::class)
-                ->findOneBy(["idFormatAllocineHabillageMobile" => 1]);
+                ->getRepository(FormatAdmooveInterstitiel::class)
+                ->findOneBy(["idFormatAdmooveInterstitiel" => 1]);
 
             $this->setPictureExample($formatString);
 
         } else {
 
             $format = $entityManager
-                ->getRepository(FormatAllocineHabillagePc::class)
-                ->findOneBy(["idFormatAllocineHabillagePc" => 1]);
+                ->getRepository(FormatAdmooveBanniere::class)
+                ->findOneBy(["idFormatAdmooveBanniere" => 1]);
 
-            $this->setPictureExample("Habillge-Pc");
-
+            $this->setPictureExample("Interstitiel");
         }
 
         $this->setHeight($format->getHeight());
@@ -106,18 +106,21 @@ class AdmooveModel extends Media
     }
 
     // Add an uploaded image to the DB
-    public function addPicture($fileName, $entityManager, $bdc, $formatSetBdd)
+    public function addPicture($fileName, $entityManager, $bdc, $formatSetBdd, $format)
     {
+
 
         $idCampagne = $entityManager->getRepository(Campagne::class)->findOneBy(["numberBdcCampagne" => $bdc]);
 
-        $addPictures = $entityManager->getRepository(AllocineVague1::class)->findOneBy(["idCampagne" => $idCampagne]);
+        $addPictures = $entityManager->getRepository(AdmooveVague1::class)->findOneBy(["idCampagne" => $idCampagne]);
 
         $setFormat = "set".$formatSetBdd."Vague1";
 
         $addPictures->$setFormat($fileName);
 
         $entityManager->flush();
+
+       $this->readMedia($bdc, $entityManager, $format);
 
     }
 
@@ -134,6 +137,8 @@ class AdmooveModel extends Media
         $DeletePicture->$setFormat(null);
 
         $entityManager->flush();
+
+        $this->readMedia($bdc, $entityManager, $format);
     }
 
 }

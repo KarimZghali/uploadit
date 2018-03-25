@@ -81,6 +81,7 @@ abstract class Media
     {
         $this->dateEnd = $dateEnd;
     }
+
     /**
      * @return mixed
      */
@@ -374,7 +375,7 @@ abstract class Media
     }
 
     // Add an uploaded image to the DB
-    abstract function addPicture($fileName, $entityManager, $bdc, $formatSetBdd);
+    abstract function addPicture($fileName, $entityManager, $bdc, $formatSetBdd, $format);
 
     // Recover media data
     abstract function readMedia($bdc, $entityManager, $format);

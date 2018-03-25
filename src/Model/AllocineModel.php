@@ -203,11 +203,10 @@ class AllocineModel extends Media
         } else {
             $this->setGif("jpeg / jpg / png");
         }
-
     }
 
     // Add an uploaded image to the DB
-    public function addPicture($fileName, $entityManager, $bdc, $formatSetBdd)
+    public function addPicture($fileName, $entityManager, $bdc, $formatSetBdd, $format)
     {
 
         $idCampagne = $entityManager->getRepository(Campagne::class)->findOneBy(["numberBdcCampagne" => $bdc]);
@@ -220,6 +219,7 @@ class AllocineModel extends Media
 
         $entityManager->flush();
 
+        $this->readMedia($bdc, $entityManager, $format);
     }
 
     // Delete an image
